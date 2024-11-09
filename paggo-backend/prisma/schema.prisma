@@ -22,7 +22,7 @@ model User {
 
 model Invoice {
   id_upload  Int     @id @default(autoincrement())
-  img        String
+  img        Bytes
   text       String
   upload_date DateTime @default(now())
   user_id     Int
