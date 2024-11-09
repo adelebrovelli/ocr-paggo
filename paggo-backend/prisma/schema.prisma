@@ -24,7 +24,7 @@ model Invoice {
   id_upload  Int     @id @default(autoincrement())
   img        String
   text       String
-  upload_date DateTime @default(now())
+  upload_dat DateTime @default(now())
   user_id     Int
   user        User    @relation(fields: [user_id], references: [id])
 }
