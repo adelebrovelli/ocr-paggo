@@ -1,0 +1,13 @@
+
+body {
+  background: #FFF;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+.button {
+  width: 100%;
+  position: relative;
+  border-radius: 4px;
+  color: #FFF;
+  background-color: #b8603b;
+  height: 83px;
+  }
