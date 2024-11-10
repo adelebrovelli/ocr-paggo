@@ -13,7 +13,7 @@ export class AuthService {
   async validateUser(email: string, password: string): Promise<any> {
     const user = await this.userService.findByEmail(email);
     if (user && await bcrypt.compare(password, user.hashed_password)) {
-      const { hashed_password, ...result } = user; // Remove a senha antes de retornar
+      const { hashed_password, ...result } = user; 
       return result;
     }
     return null;
@@ -22,7 +22,7 @@ export class AuthService {
   async login(user: any) {
     const payload = { username: user.email, sub: user.id };
     return {
-      access_token: this.jwtService.sign(payload, { expiresIn: '1h' }), // Configuração de expiração do token
+      access_token: this.jwtService.sign(payload, { expiresIn: '1h' }), 
     };
   }
 
