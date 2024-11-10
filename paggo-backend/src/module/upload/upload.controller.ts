@@ -1,4 +1,4 @@
-import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, HttpStatus, HttpException, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { UploadService } from './upload.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -10,7 +10,10 @@ export class UploadController {
 @Post ("/")
 @UseInterceptors(FileInterceptor('file'))
 async uploadFile(@UploadedFile() file: Express.Multer.File) {
-  console.log(file);
-  return { message: 'File uploaded successfully', file };
+  if (!file) {
+    throw new HttpException('Arquivo não encontrado', HttpStatus.BAD_REQUEST);
+  }
+  await this.uploadService.saveFile(file); // Chama o serviço para armazenar o arquivo
+  return { message: 'Upload realizado com sucesso', file };
 }
 }
