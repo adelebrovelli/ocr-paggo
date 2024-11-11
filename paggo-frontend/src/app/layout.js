@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const Inter = localFont({
-  src: "./fonts/Inter.ttf",
+  src: "./fonts/Inter.ttf", 
   variable: "--font-inter",
   weight: "100 900",
 });
