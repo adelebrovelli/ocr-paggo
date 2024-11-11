@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import './register.css'; 
 import { register } from '/src/services/authService';
 
@@ -15,7 +16,6 @@ export default function Register() {
       setErrorMessage(null); 
       try {
         const result = await register(name, email, password);
-        console.log('Registration successful:', result);
         alert('Registration successful');
       } catch (error) {
         setErrorMessage(error); 
@@ -25,7 +25,9 @@ export default function Register() {
     return (
       <div className="index-background">
         <div className="leftSideText">
+        <Link href="/"> 
           <img src="/logoPaggo.png" alt="Logo da Paggo"/>
+          </Link>
           <p className="sentence">Your number one invoice manager.</p>
           <footer>Paggo © 2024</footer>
         </div>

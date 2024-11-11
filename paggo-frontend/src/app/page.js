@@ -6,7 +6,9 @@ export default function Home() {
     return (
       <div className="index-background">
         <div className="leftSideText">
+        <Link href="/"> 
           <img src="/logoPaggo.png" alt="Logo da Paggo"/>
+          </Link>
           <p className="sentence">Your number one invoice manager.</p>
           <footer>Paggo © 2024</footer>
         </div>

@@ -7,10 +7,14 @@ export async function login(email, password) {
     const response = await axios.post(`${API_URL}/auth/login`, { email, password });
     return response.data;
   } catch (error) {
-    console.error('Login Error Full:', error); 
-    throw error.response?.data?.message || 'Login failed';
+    if (error.response) {
+      throw error;
+    } else {
+      throw new Error('Network or unexpected error');
+    }
   }
 }
+
 
 export async function register(name, email, password) {
   try {
