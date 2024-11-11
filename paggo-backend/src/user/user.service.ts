@@ -7,11 +7,6 @@ export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createUser(email: string, name: string, password: string): Promise<any> {
-    const existingUser = await this.prisma.user.findUnique({ where: { email } });
-    if (existingUser) {
-      throw new HttpException('This email address is already taken', HttpStatus.BAD_REQUEST);
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10); 
 
     return this.prisma.user.create({

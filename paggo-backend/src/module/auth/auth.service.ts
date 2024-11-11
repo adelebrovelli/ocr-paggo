@@ -2,7 +2,6 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
-import { console } from 'inspector';
 
 @Injectable()
 export class AuthService {
@@ -18,16 +17,13 @@ export class AuthService {
   
     const user = await this.userService.findByEmail(email);
     if (!user) {
-      console.log('User not found');
       throw new HttpException('User not found', HttpStatus.UNAUTHORIZED);
     }
-    console.log('User found', user);
+  
     
 
     const isPasswordValid = await bcrypt.compare(password, user.hashed_password);
-    console.log('Password valid:', isPasswordValid);
     if (!isPasswordValid) {
-      console.log('Invalid password')
       throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
     }
   
