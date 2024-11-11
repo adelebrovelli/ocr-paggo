@@ -4,7 +4,7 @@
   background-color: #FCFCF9;
 }
 
-.leftSideText {
+.leftSideText, .login-form {
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 130;
   flex: 1;
@@ -13,7 +13,6 @@
   justify-content: center;
   align-items: flex-start;
   padding: 40px;
-  background-color: #FCFCF9;
 }
 
 .leftSideText img {
@@ -67,7 +66,6 @@
 .button {
   font-weight: 130;
   width: 200px; 
-  max-height: max-content;
   padding: 20px;
   margin: 10px 0;
   border-radius: 4px;
@@ -77,9 +75,35 @@
   border: none;
   cursor: pointer;
   font-size: 18px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.input-field {
+  font-weight: 130;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  font-weight: 130;
+  background-color: #b8603b;
+  color: #FFF;
+  cursor: pointer;
+  border: none;
   transition: background-color 0.3s;
 }
 
-.button:hover {
+.submit-button:hover {
   background-color: #944e2c;
 }
+

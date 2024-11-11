@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import './globals.css';
-import './index.css';
+import './/index.css';
 
 export default function Home() {
     return (
@@ -11,9 +12,13 @@ export default function Home() {
         </div>
         <div className="rightSide">
           <h1>Welcome.</h1>
-          <button className="button" href="#paggo-frontend/src/app/login/page.js">Login</button>
+          <Link href="/auth/login">
+      <button className="button">Login</button>
+          </Link>
           <p>or</p>
-          <button className="button" href="#">Sign up</button>
+          <Link href="/auth/register">
+      <button className="button">Sign up</button>
+          </Link>
         </div>
       </div>
     );
