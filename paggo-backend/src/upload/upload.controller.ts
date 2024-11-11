@@ -1,19 +1,32 @@
-import { Controller, Post, HttpStatus, HttpException, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, Get, Request, UseGuards, HttpException, HttpStatus, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { UploadService } from './upload.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('upload')
+@Controller('dashboard')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-
-@Post ("/")
-@UseInterceptors(FileInterceptor('file'))
-async uploadFile(@UploadedFile() file: Express.Multer.File) {
-  if (!file) {
-    throw new HttpException('Arquivo não encontrado', HttpStatus.BAD_REQUEST);
+  @Post('/upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @Request() req) {
+    const userId = req.session.userId; 
+    if (!userId) {
+      throw new HttpException('User not authenticated', HttpStatus.UNAUTHORIZED);
+    }
+    if (!file) {
+      throw new HttpException('File not found', HttpStatus.BAD_REQUEST);
+    }
+    await this.uploadService.saveFile(file, userId);
+    return { message: 'Successfully uploaded', file };
   }
-  await this.uploadService.saveFile(file); 
-  return { message: 'Upload realizado com sucesso', file };
-}
+
+  @Get('/')
+  async getUserFiles(@Request() req) {
+    const userId = req.session.userId;
+    if (!userId) {
+      throw new HttpException('User not authenticated', HttpStatus.UNAUTHORIZED);
+    }
+    const files = await this.uploadService.getUserFiles(userId);
+    return files;
+  }
 }

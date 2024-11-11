@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import './login.css'; 
 import { login } from '/src/services/authService';
@@ -9,6 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ export default function Login() {
     try {
       const result = await login(email, password);
       alert('Login successful');
-      //redirecionar
+      router.push('/dashboard');
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setErrorMessage('Invalid credentials. Please check your email and password.');

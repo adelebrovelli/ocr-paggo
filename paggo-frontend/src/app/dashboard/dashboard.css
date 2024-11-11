@@ -1,0 +1,109 @@
+.index-background {
+  display: flex;
+  height: 100vh;
+  background-color: #FCFCF9;
+}
+
+.leftSideText, .login-form {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 130;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.leftSideText img {
+  width: 150px; 
+  margin-bottom: 20px;
+}
+
+.leftSideText, p {
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.leftSideText footer {
+  margin-top: auto;
+  font-size: 16px;
+}
+
+.rightSide {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f1;
+  border-left: 1px solid #e3e4e2;
+}
+
+.rightSide h1 {
+  font-weight: 130;
+  font-size: 35px;
+  color: #000; 
+  margin-bottom: 20px;
+}
+
+.rightSide p {
+  font-size: 18.5px;
+  color: #000;
+  margin: 20px 0;
+}
+
+.sentence {
+  margin-top: 177px;
+  max-width: 300px; 
+  font-size: 35px;
+  line-height: 1.4; 
+  word-wrap: break-word;
+}
+
+.button {
+  font-weight: 130;
+  width: 200px; 
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 4px;
+  background-color: #b8603b;
+  color: #FFF;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.input-field {
+  font-weight: 130;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  font-weight: 130;
+  background-color: #b8603b;
+  color: #FFF;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #944e2c;
+}
+

@@ -6,12 +6,11 @@ const T = require('tesseract.js');
 export class UploadService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async saveFile(file: Express.Multer.File): Promise<void> {
+  async saveFile(file: Express.Multer.File, userId: number): Promise<void> {
     if (!file) {
-        throw new HttpException('The file could not be uploaded. Please try again.', HttpStatus.BAD_REQUEST);
+        throw new HttpException('File could not be uploaded. Please try again.', HttpStatus.BAD_REQUEST);
       }
  try{ 
-
     const ocr = await T.recognize(file.buffer, 'eng+por', {
         logger: info => {
           if (info.status === 'recognizing text...') {
@@ -27,7 +26,7 @@ export class UploadService {
         img: file.buffer, 
         text: ocrText,               
         upload_date: new Date(), 
-        user_id: 1,             // tentar substituir pelo id do login caso dê tempo
+        user_id: userId,             
       },
     });
 
@@ -41,4 +40,23 @@ export class UploadService {
       );
   }
   }
+
+  async getUserFiles(userId: number) {
+  try {
+    const files = await this.prisma.invoice.findMany({
+      where: { user_id: userId },  
+      orderBy: { upload_date: 'desc' },
+    });
+    return files;
+  } catch (error) {
+    console.error('Error fetching files:', error);
+    throw new HttpException(
+      'Error fetching files.',
+      HttpStatus.INTERNAL_SERVER_ERROR,
+    );
+  }
 }
+
+}
+
+  
