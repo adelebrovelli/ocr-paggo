@@ -13,7 +13,7 @@ async uploadFile(@UploadedFile() file: Express.Multer.File) {
   if (!file) {
     throw new HttpException('Arquivo não encontrado', HttpStatus.BAD_REQUEST);
   }
-  await this.uploadService.saveFile(file); // Chama o serviço para armazenar o arquivo
+  await this.uploadService.saveFile(file); 
   return { message: 'Upload realizado com sucesso', file };
 }
 }

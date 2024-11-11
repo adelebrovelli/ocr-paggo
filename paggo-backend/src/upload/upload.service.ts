@@ -19,7 +19,7 @@ export class UploadService {
           }
         },
       });
-  //logger em percentual como feedback de andamento p usuário 
+  
     const ocrText= ocr.data.text;
 
     await this.prisma.invoice.create({
