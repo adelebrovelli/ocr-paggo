@@ -22,6 +22,7 @@ export class AuthService {
       throw new HttpException('User not found', HttpStatus.UNAUTHORIZED);
     }
     console.log('User found', user);
+    
 
     const isPasswordValid = await bcrypt.compare(password, user.hashed_password);
     console.log('Password valid:', isPasswordValid);
@@ -51,9 +52,8 @@ export class AuthService {
     if (existingUser) {
       throw new HttpException('This email address is already taken', HttpStatus.BAD_REQUEST);
     }
-  
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await this.userService.createUser(email, name, hashedPassword);
+    
+    const newUser = await this.userService.createUser(email, name, password);
   
     const payload = { username: newUser.email, sub: newUser.id };
     const token = this.jwtService.sign(payload, { expiresIn: '1h' });

@@ -12,8 +12,7 @@ export class UserService {
       throw new HttpException('This email address is already taken', HttpStatus.BAD_REQUEST);
     }
 
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
+    const hashedPassword = await bcrypt.hash(password, 10); 
 
     return this.prisma.user.create({
       data: {

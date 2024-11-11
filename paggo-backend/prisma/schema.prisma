@@ -16,7 +16,7 @@ model User {
   id              Int     @id @default(autoincrement())
   email           String  @unique
   name            String
-  hashed_password String
+  hashed_password String  @db.VarChar(70)
   documents       Invoice[] 
 }
 
