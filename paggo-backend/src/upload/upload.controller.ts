@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Request, UseGuards, HttpException, HttpStatus, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, Get, Req, HttpException, HttpStatus, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { UploadService } from './upload.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -6,9 +6,9 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-  @Post('/upload')
+  @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File, @Request() req) {
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @Req() req) {
     const userId = req.session.userId; 
     if (!userId) {
       throw new HttpException('User not authenticated', HttpStatus.UNAUTHORIZED);
@@ -20,8 +20,8 @@ export class UploadController {
     return { message: 'Successfully uploaded', file };
   }
 
-  @Get('/')
-  async getUserFiles(@Request() req) {
+  @Get('upload')
+  async getUserFiles(@Req() req) {
     const userId = req.session.userId;
     if (!userId) {
       throw new HttpException('User not authenticated', HttpStatus.UNAUTHORIZED);

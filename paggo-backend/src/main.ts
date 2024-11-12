@@ -10,10 +10,10 @@ async function bootstrap() {
   });
   app.use(
     session({
-      secret: 'your-secret-key', // Substitua por uma chave segura
+      secret: 'chave', 
       resave: false,
       saveUninitialized: false,
-      cookie: { secure: false }, // Altere para `true` em produção (requer HTTPS)
+      cookie: { secure: false }, 
     }),
   );
   await app.listen(3000);

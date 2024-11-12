@@ -1,0 +1,80 @@
+.index-background {
+  display: flex;
+  height: 100vh;
+  background-color: #FCFCF9;
+  font-family: Arial, sans-serif;
+}
+
+.leftSideText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.leftSideText h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.file-list {
+  background-color: #f3f4f1;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-indicator {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  margin-right: 10px;
+}
+
+.file-name {
+  margin-right: auto;
+}
+
+.file-date {
+  color: #888;
+}
+
+.last-invoices {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.rightSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #FCFCF9;
+}
+
+.button {
+  background-color: #b8603b;
+  color: #FFF;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #944e2c;
+}
